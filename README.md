@@ -14,6 +14,6 @@ http://crd.lbl.gov/departments/applied-mathematics/ANAG/about/staff-and-postdocs
 
 Some relevant books are the following:
 
-http://www.springer.com/us/book/9780387982816<br />
-http://www.springer.com/us/book/9781441922571<br />
-http://www.springer.com/gp/book/9783642388958
+Complexity and Real Computation. Authors: L. Blum, F. Cucker, M. Shub, S. Smale.<br />
+Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra. Authors: D. Cox, J. Little,  D. O'Shea<br />
+Condition: The Geometry of Numerical Algorithms. Authors: P. Bürgisser, F. Cucker.
