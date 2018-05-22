@@ -54,8 +54,6 @@ int main(){
 		else{ for(i = 0; i < n; i++) sol[(t-1)*n+i] = w[i]; }
 	
 	}
-
-	/* Print the computed zeros */	
 	
         exit( 0 );
 } 
