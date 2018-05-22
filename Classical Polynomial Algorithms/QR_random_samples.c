@@ -12,7 +12,7 @@ void print_vector( char* desc, lapack_int k, lapack_complex_double* sol );
 double normal_distribution( void );
 	
 /* Main program */
-int main() {
+int main(){
 	srand(time(NULL));
 	
         /* Local variables */
@@ -34,8 +34,7 @@ int main() {
 	lapack_complex_double pol[n+1], a[n*n], w[n], vl[n], vr[n], work[1], sol[n*NUMBER_OF_TESTS];
 	double scale[n], rconde[n], rcondv[n], rwork[2*n-1];
 	
-	for(t = 1; t <= NUMBER_OF_TESTS; t++) {
-
+	for(t = 1; t <= NUMBER_OF_TESTS; t++){
 		/* Creation of random polynomial and its companion matrix */
 		for(i = 0; i < n; i++) { 
 			re = normal_distribution();
@@ -52,34 +51,31 @@ int main() {
 
 		/* Vector with all computed zeros */
 		if( info != 0 ) t--; 
-		else { for(i = 0; i < n; i++) sol[(t-1)*n+i] = w[i]; }
+		else{ for(i = 0; i < n; i++) sol[(t-1)*n+i] = w[i]; }
 	
 	}
-
-	/* Print the computed zeros */	
-	//print_vector("Computed zeros:\n", n*NUMBER_OF_TESTS, sol);
 	
         exit( 0 );
 } 
 
 /* Auxiliary routine: printing a vector */
-	void print_vector( char* desc, lapack_int k, lapack_complex_double* sol ) {
-	        lapack_int i;
-	        printf( "\n %s\n", desc );
-	        for(i = 0; i < k; i++) {
-			if( cimag(sol[i]) >= 0 ) printf( " %6.4lf+%6.4lfi\n", creal(sol[i]), cimag(sol[i]) );
+void print_vector( char* desc, lapack_int k, lapack_complex_double* sol ) {
+	lapack_int i;
+	printf( "\n %s\n", desc );
+	        for(i = 0; i < k; i++){
+		    if( cimag(sol[i]) >= 0 ) printf( " %6.4lf+%6.4lfi\n", creal(sol[i]), cimag(sol[i]) );
 			else printf( " %6.4lf%6.4lfi\n", creal(sol[i]), cimag(sol[i]) );
-		}
+	        }
 	        printf( "\n" );
 }
 
 /* Generates a pseudo-random number with distribution N(0,1) */
-double normal_distribution( void ) {
+double normal_distribution( void ){
 	lapack_int i, s;
 	double mean, sum = 0;
 		
 	/* Sum of 1000 values with uniform distribution in [-1,1] */
-	for(i = 1; i <= 1000; i++) {
+	for(i = 1; i <= 1000; i++){
 		s = rand();
 		sum = sum + 2.0*((double)s/(double)(RAND_MAX+1.0))-1.0;
 	}

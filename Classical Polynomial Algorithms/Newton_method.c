@@ -41,7 +41,8 @@ int main(){
 	for(i=1; i<d; i++){ 
 		printf("(%lf + %lfi)z^%d + ", creal(pol[i]), cimag(pol[i]), i);
 	}
-        printf("z^%d.\n\n",d); //Up to this point, we have the description of the program and the creation of the polynomial by the user.
+	//Up to this point, we have the description of the program and the creation of the polynomial by the user.
+        printf("z^%d.\n\n",d); 
 
 	for(i=0; i<d; i++){
 		R = R + cabs(pol[i]);
@@ -49,22 +50,25 @@ int main(){
 	if(R < 1){
 		R = 1;
 	}
-	printf("All the zeros of this polynomial are in the complex disc centered on the origin with radius %lf.\n", R); //The program determines the region where the zeros will be searched, since all zeros are contained in the disk centered on the origin with radius R = max{1, |a_0| + |a_1| + ... + |a_(d-1)|}. 
+	//The program determines the region where the zeros will be searched, since all zeros are contained in the disk centered on the origin with radius R = max{1, |a_0| + |a_1| + ... + |a_(d-1)|}. 
+	printf("All the zeros of this polynomial are in the complex disc centered on the origin with radius %lf.\n", R); 
 		
 	printf("Computed zeros:\n\n");	
 
+	//z is a guess to start Newton's iteration. If z is an approximate zero, it will converge to the desired precision in a few iterations. The idea is to make a lot of random guesses and apply the iterations to each of them.
 	for(i=0; i<1000000*R; i++){
 		re = R*(float)rand()/RAND_MAX + rand()/RAND_MAX;
        		im = R*(float)rand()/RAND_MAX + rand()/RAND_MAX;
-       		z = re + im*I; //z is a guess to start Newton's iteration. If z is an approximate zero, it will converge to the desired precision in a few iterations. The idea is to make a lot of random guesses and apply the iterations to each of them.
+       		z = re + im*I; 
 		
 		b = 1;
+		//Checks if z is an approximate zero of some already computed zero. In the positive case, we do not do Newton's iteration and generate another point.
 		for(j=0; j<=t; j++){
 			if(cabs(z-sol[t]) <= B/gam[t]){
 				b = 0;
 				break;
 			}
-		} //Checks if z is an approximate zero of some already computed zero. In the positive case, we do not do Newton's iteration and generate another point.
+		} 
 
 		if(b){
 			cont = 0;
@@ -74,6 +78,7 @@ int main(){
 				Dp = Dp + j*pol[j]*cpow(z,j-1);
 				p = p + pol[j]*cpow(z,j);
 			}
+			//Newton's iteration starting from z. At most 100 iterations are done (there is nothing so special in this value).
 			while(cabs(p) > e_out && cont < 10){
 				if(Dp != 0){
 					z = z - cpow(Dp,-1)*p;
@@ -91,7 +96,7 @@ int main(){
 					p = p + pol[j]*cpow(z,j);
 				}
 				cont++;			
-			} //Newton's iteration starting from z. At most 100 iterations are done (there is nothing so special in this value).
+			} 
 			
 			if(cabs(p) <= e_out){	
 				 //Computes gamma (p, z), where z is the candidate to the computed solution by Newton iteration.
@@ -109,6 +114,7 @@ int main(){
 						break;
 					}
 				}
+				//Checks if z is a candidate for zero. If so, we test if z is too close to any zero already computed. If this happens, we consider it to be the same zero and discard it. Otherwise, we include z in the solution vector.
 				if(b){
 					t++;
 					sol[t] = z;								
@@ -120,12 +126,13 @@ int main(){
 						printf("%.16lf +%.16lfi, Gamma = %.16lf\n", creal(z), cimag(z), gam[t]);
 					}
 				}
-			} //Checks if z is a candidate for zero. If so, we test if z is too close to any zero already computed. If this happens, we consider it to be the same zero and discard it. Otherwise, we include z in the solution vector.
+			} 
 		}
 
+		//Checks whether the solution vector already contains all zeros.
 		if(t == d-1){
 			break;
-		} //Checks whether the solution vector already contains all zeros.
+		} 
 	}
 
 	printf("\nTotal of computed zeros: %d\nTotal of tested points: %d\n\n",t+1, i);
@@ -138,25 +145,28 @@ double Gamma(double repol[], double impol[]){
 	double aux, re, im, g = 0;
 	double complex D, DDp[d+1];
 	
+	//DDp[i] is the vector of the coordinates of the first derivative of p.
 	for(i=0; i<=d-1; i++){	
 		re = repol[i+1];
 		im = impol[i+1];
 		DDp[i] = (i+1)*(re+im*I);
 	}
-	DDp[d] = 0; //DDp[i] is the vector of the coordinates of the first derivative of p.
-		
+	DDp[d] = 0; 
+	
+	//For each j, D is the jth derivative of p in z.	
 	for(j=2; j<=d; j++){
 		D = 0;
 		for(i=0; i<=d-j; i++){
 			DDp[i] = (i+1)*DDp[i+1];
 			D = D + DDp[i]*cpow(z,i);
-		} //For each j, D is the jth derivative of p in z.
+		} 
 				
 		k=1;
 		for(i=2; i<=j; i++){
 			k=k*i;
 		}
-		aux = pow( cabs(cpow(Dp,-1)*D/k), 1.0/(j-1.0) ); //Candidate to gamma(p,z).
+		//Candidate to gamma(p,z).
+		aux = pow( cabs(cpow(Dp,-1)*D/k), 1.0/(j-1.0) ); 
 		if(g < aux){
 			g = aux;
 		}
