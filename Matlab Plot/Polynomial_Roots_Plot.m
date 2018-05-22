@@ -2,15 +2,14 @@
 
 z = zeros(0);
 n = 101;
-matlabpool('open',4);
-parfor j=1:10000
+
+for j=1:10000
    p = random('Uniform', -1, 1, [1,n]);
    R = roots(p);
    if max(abs(real(R))) < 2 & max(abs(imag(R))) < 2
       z = [ z, R.' ];
    end
 end
-matlabpool('close');
 
 Re = real(z);
 Im = imag(z);
