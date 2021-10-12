@@ -19,7 +19,7 @@ is the set of zeros of all perturbed Littlewood polynomials
 In this context note that actual Littlewood polynomials is the frame associated to <img src="https://render.githubusercontent.com/render/math?math=t = 1"> and no 
 other. Also note that we can't go to infinity, however visual convergence was observed already for t less than 500. 
 
-
+<img src="https://github.com/felipebottega/PolynomialCodes/blob/master/Littlewood%20Polynomials/im_readme.png"><br><br>
 
 For more about Littlewood polynomials check these links:
 
