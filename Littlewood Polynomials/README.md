@@ -11,8 +11,8 @@ converted to video. Each frame is a heatmap of zeros of a certain set of polynom
 means more zeros.
 
 We illustrate what this projects does with a simple example. In [this video](https://www.youtube.com/watch?v=wZZqCccU0wk) we see what happens when the independent 
-coefficient goes to infinity. More precisely, for each <img src="https://render.githubusercontent.com/render/math?math=t \in [0, +\infty)">, each frame of the video 
-is the set of zeros of all perturbed Littlewood polynomials 
+coefficient goes to infinity. More precisely, for each <img src="https://render.githubusercontent.com/render/math?math=t \in [0, +\infty)"> we have a frame of the 
+video, which shows the set of zeros of all perturbed Littlewood polynomials 
 
 <img src="https://render.githubusercontent.com/render/math?math=\hspace{10cm}p(x) = t \cdot a_0 %2B a_1 x %2B a_2 x^2 %2B \ldots %2B a_{14} x^{14}.">
 
