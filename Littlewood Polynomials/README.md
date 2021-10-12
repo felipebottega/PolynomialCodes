@@ -16,7 +16,7 @@ video, which shows the set of zeros of all perturbed Littlewood polynomials
 
 <img src="https://render.githubusercontent.com/render/math?math=\hspace{10cm}p(x) = t \cdot a_0 %2B a_1 x %2B a_2 x^2 %2B \ldots %2B a_{14} x^{14}.">
 
-In this context note that actual Littlewood polynomials is the frame associated to <img src="https://render.githubusercontent.com/render/math?math=t = 1"> and no 
+In this context note that actual Littlewood polynomials only appears for the frame associated to <img src="https://render.githubusercontent.com/render/math?math=t = 1"> and no 
 other. Also note that we can't go to infinity, however visual convergence was observed already for t less than 500. 
 
 <img src="https://github.com/felipebottega/PolynomialCodes/blob/master/Littlewood%20Polynomials/im_readme.png"><br><br>
