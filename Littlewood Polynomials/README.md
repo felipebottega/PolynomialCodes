@@ -7,7 +7,7 @@ A polynomial
 is a *Littlewood polynomial* if all the <img src="https://render.githubusercontent.com/render/math?math=a_i = \pm 1">. The objective of this project is to 
 carry out an exploratory analysis with continuous perturbations of Littlewood polynomials, i.e., to see what happens in the neighborhood of these polynomials.
 A (Jupyter) notebook is available for anyone interested in conducting their own experiments. This notebook generates a sequence of images which should then be 
-converted to video. Each frame is a heatmap of zeros of a certain set of polynomials, where darker color means less zeros in the region, and brighter colors 
+converted to video. Each frame is a heatmap of all *zeros* (or *roots*) of a certain set of polynomials, where darker color means less zeros in the region, and brighter colors 
 means more zeros.
 
 We illustrate what this projects does with a simple example. In [this video](https://www.youtube.com/watch?v=wZZqCccU0wk) we see what happens when the independent 
